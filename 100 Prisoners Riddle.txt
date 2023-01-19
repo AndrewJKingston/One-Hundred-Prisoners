@@ -1,0 +1,56 @@
+100 Prisoners Riddle- Simulation
+
+
+Using linked lists and circular linked lists
+
+Linked List ADT should implement a method getFirst(), returning the 
+first value of the list, and implement a method .contains(), returning if 
+the list contains a given item.
+
+First add one node to begin first list(loop). If first node.Next() is itself, 
+close linked list and create a new list. 
+
+Else, search through array for node with item of first node.Next(). Add node to list, and 
+repeat until last node item is equal to first node item.
+
+If array is not empty, create a new list and repeat steps. 
+
+
+
+Main Testing Method
+
+Start by creating 100 nodes with non-repeating random values from 1 to 100, with 
+a non-repeating next value
+
+Add these nodes to an array as they are created, for temporary storage
+while creating the linked lists
+
+Beginning with prisoner 1, search each list if it contains
+nextItem() of 1. If not, search next list. If the prisoner cannot find
+nextItem of 1 within 50 searches, fail test.
+
+BoxNode methods:
+
++BoxNode()
++getBoxNumber() : Object
++getCardNumber() : Object
++getNext() : BoxNode
++setNext(nextNode : BoxNode) : void
+
+Box Linked List Methods: 
+
++BoxLinkedList()
++isEmpty() : boolean
++getSize() : int
++add(newBoxNumber : Object, newCardNumber : Object) : void
++addBoxNode(newBoxNode : BoxNode) : void
++remove(index : int) : Object throws ListException
++removeCardNumber(cardNumber : Object) Object throws ListException
++removeAll() : void
++getBoxNumber(index : int) : Object throws ListException
++getCardNumber(index : int) : Object throws ListException
+-getHelper(index : int) : BoxNode throws ListException
++getFirstBoxNumber() : Object throws ListException
++getLastCardNumber() : Object throws ListException
++getFirstBoxNode() : BoxNode throws ListException
++containsCardNumber(item : Object) : boolean throws ListException

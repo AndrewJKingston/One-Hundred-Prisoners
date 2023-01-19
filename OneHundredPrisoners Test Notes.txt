@@ -1,0 +1,35 @@
+listOfBoxes:
+
+Box 1, Card 10
+Box 2, Card 4
+Box 3, Card 8
+Box 4, Card 5
+Box 5, Card 6
+Box 6, Card 3
+Box 7, Card 9
+Box 8, Card 2
+Box 9, Card 1
+Box 10, Card 7
+
+First while loop: 
+nextBox = 1 , 10
+Remove nextBox from listOfBoxes
+listOfBoxes.getSize() = 9
+newList.getLastCardNumber() = 10
+
+newList: 
+Box 1, Card 10
+
+Continued in for loop: 
+get box 10 from listOfBoxes
+Remove card 7 from listOfBoxes
+listOfBoxes.getSize() = 8
+newList.getLastCardNumber() = 7
+
+newList: 
+Box 1, Card 10
+Box 10, Card 7
+
+Continued:
+get box 9, 1
+Remove card 1
