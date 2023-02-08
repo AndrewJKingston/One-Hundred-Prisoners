@@ -49,6 +49,24 @@ public class OneHundredPrisonersTESTING
 		counterOne = 1;
 	}
 
+	public void createHundredRandomBoxesArray() 
+	{
+		ArrayList<Integer> numberArrayList = new ArrayList<Integer>();
+		int nextValue, counter = 1;
+
+		for (int i = 0; i < NUMBER_OF_BOXES; i++)
+			numberArrayList.add(i + 1);
+		
+		while (listOfBoxes.getSize() < NUMBER_OF_BOXES)
+		{
+			nextValue = r.nextInt(numberArrayList.size());
+			if (!listOfBoxes.containsCardNumber(numberArrayList.get(nextValue)))
+			{
+				listOfBoxes.add(counter++, numberArrayList.get(nextValue));
+			}
+		}
+	}
+
 	public void createBoxLoops()
 	{
 		BoxLinkedList newList;
@@ -122,10 +140,10 @@ public class OneHundredPrisonersTESTING
 			listOfBoxes.removeAll();
 			boxLoops.clear();
 
-			createHundredRandomBoxes();
-            System.out.println("createHundredRandomBoxes successful");
+			createHundredRandomBoxesArray();
+            // System.out.println("createHundredRandomBoxesArray successful");
 			createBoxLoops();
-            System.out.println("createBoxLoops successful");
+            // System.out.println("createBoxLoops successful");
 
 			float tempFailed = timesFailed;
 
