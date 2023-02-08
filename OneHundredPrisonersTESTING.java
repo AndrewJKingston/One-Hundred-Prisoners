@@ -46,6 +46,7 @@ public class OneHundredPrisonersTESTING
 				}
 			}
 		}
+		counterOne = 1;
 	}
 
 	public void createBoxLoops()
@@ -122,9 +123,9 @@ public class OneHundredPrisonersTESTING
 			boxLoops.clear();
 
 			createHundredRandomBoxes();
-            // System.out.println("createHundredRandomBoxes successful (124)");
+            System.out.println("createHundredRandomBoxes successful");
 			createBoxLoops();
-            // System.out.println("createBoxLoops successful (126)");
+            System.out.println("createBoxLoops successful");
 
 			float tempFailed = timesFailed;
 
