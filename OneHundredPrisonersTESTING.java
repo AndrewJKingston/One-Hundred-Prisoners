@@ -1,5 +1,6 @@
 import java.util.*;
 import java.text.NumberFormat;
+import java.io.*;
 
 public class OneHundredPrisonersTESTING
 {
@@ -63,6 +64,7 @@ public class OneHundredPrisonersTESTING
 			if (!listOfBoxes.containsCardNumber(numberArrayList.get(nextValue)))
 			{
 				listOfBoxes.add(counter++, numberArrayList.get(nextValue));
+				System.out.println("Box: " + (counter - 1) + " Card: " + numberArrayList.get(nextValue));
 			}
 		}
 	}
@@ -141,9 +143,9 @@ public class OneHundredPrisonersTESTING
 			boxLoops.clear();
 
 			createHundredRandomBoxesArray();
-            // System.out.println("createHundredRandomBoxesArray successful");
+            System.out.println("createHundredRandomBoxesArray successful");
 			createBoxLoops();
-            // System.out.println("createBoxLoops successful");
+            System.out.println("createBoxLoops successful");
 
 			float tempFailed = timesFailed;
 
@@ -175,7 +177,7 @@ public class OneHundredPrisonersTESTING
 			String fTimesFailed = NumberFormat.getNumberInstance(Locale.US).format(timesFailed);
 			String fTimesSurvived = NumberFormat.getNumberInstance(Locale.US).format(timesSurvived);
 	
-			System.out.print("Runtime: " + minutes + ":" + seconds + ":" + milliseconds + "   Times run: " + fTimesRun + "   Times failed: " + fTimesFailed + "   Times survived: " + fTimesSurvived + "\r");
+			// System.out.print("Runtime: " + minutes + ":" + seconds + ":" + milliseconds + "   Times run: " + fTimesRun + "   Times failed: " + fTimesFailed + "   Times survived: " + fTimesSurvived + "\r");
 		}
 
 		float rateOfSurvival = ((runTimes - timesFailed) / runTimes) * 100;
