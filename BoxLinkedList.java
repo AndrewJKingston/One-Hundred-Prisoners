@@ -211,7 +211,7 @@ public class BoxLinkedList
 
 		for (int i = 0; i < this.numberOfItems; i++)
 		{
-			if (current.getCardNumber() == item)
+			if (current.getCardNumber().equals(item))
 			{
 				contains = true;
 				break;

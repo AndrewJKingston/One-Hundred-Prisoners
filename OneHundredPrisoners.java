@@ -64,7 +64,7 @@ public class OneHundredPrisoners
 				{
 					for (int i = 0; i < listOfBoxes.getSize(); i++)
 					{
-						if (listOfBoxes.getBoxNumber(i) == newList.getLastCardNumber())
+						if (listOfBoxes.getBoxNumber(i).equals(newList.getLastCardNumber()))
 						{
 							newList.add(listOfBoxes.getBoxNumber(i), listOfBoxes.getCardNumber(i));
 							listOfBoxes.removeCardNumber(listOfBoxes.getCardNumber(i));
@@ -147,7 +147,7 @@ public class OneHundredPrisoners
 			String fTimesSurvived = NumberFormat.getNumberInstance(Locale.US).format(timesSurvived);
 	
 			System.out.print("Runtime: " + minutes + ":" + seconds + ":" + milliseconds + "   Times run: " + fTimesRun + "   Times failed: " + fTimesFailed + "   Times survived: " + fTimesSurvived + "\r");
-			}
+		}
 
 		float rateOfSurvival = ((runTimes - timesFailed) / runTimes) * 100;
 		System.out.println("\nRate of survival: " + rateOfSurvival + "%");

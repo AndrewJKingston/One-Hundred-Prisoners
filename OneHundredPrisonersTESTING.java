@@ -29,8 +29,6 @@ public class OneHundredPrisonersTESTING
 
 	public void createHundredRandomBoxes()
 	{
-		// Incorrectly generating two 128 cards
-
 		boolean placed = false;
 		int nextValue;
 
@@ -70,13 +68,13 @@ public class OneHundredPrisonersTESTING
 					{
 						if (listOfBoxes.getBoxNumber(i).equals(newList.getLastCardNumber()))
 						{
-                            System.out.println(counterTwo++ + ": Box number equals last card number");
+                            //System.out.println(counterTwo++ + ": Box number equals last card number");
 							newList.add(listOfBoxes.getBoxNumber(i), listOfBoxes.getCardNumber(i));
 							listOfBoxes.removeCardNumber(listOfBoxes.getCardNumber(i));
 						}
 						else if (listOfBoxes.isEmpty())
                         {
-                            System.out.println("listOfBoxes.isEmpty(), break");
+                            //System.out.println("listOfBoxes.isEmpty(), break");
 							break;
                         }
 						//System.out.println("broken");
@@ -84,7 +82,7 @@ public class OneHundredPrisonersTESTING
 				}
 			}
 			boxLoops.add(newList);
-            System.out.println("Box loop added to newList");
+            //System.out.println("Box loop added to newList");
 		}
 	}
 
@@ -124,9 +122,9 @@ public class OneHundredPrisonersTESTING
 			boxLoops.clear();
 
 			createHundredRandomBoxes();
-            System.out.println("createHundredRandomBoxes successful (124)");
+            // System.out.println("createHundredRandomBoxes successful (124)");
 			createBoxLoops();
-            System.out.println("createBoxLoops successful (126)");
+            // System.out.println("createBoxLoops successful (126)");
 
 			float tempFailed = timesFailed;
 
@@ -158,7 +156,7 @@ public class OneHundredPrisonersTESTING
 			String fTimesFailed = NumberFormat.getNumberInstance(Locale.US).format(timesFailed);
 			String fTimesSurvived = NumberFormat.getNumberInstance(Locale.US).format(timesSurvived);
 	
-			//System.out.print("Runtime: " + minutes + ":" + seconds + ":" + milliseconds + "   Times run: " + fTimesRun + "   Times failed: " + fTimesFailed + "   Times survived: " + fTimesSurvived + "\r");
+			System.out.print("Runtime: " + minutes + ":" + seconds + ":" + milliseconds + "   Times run: " + fTimesRun + "   Times failed: " + fTimesFailed + "   Times survived: " + fTimesSurvived + "\r");
 		}
 
 		float rateOfSurvival = ((runTimes - timesFailed) / runTimes) * 100;
