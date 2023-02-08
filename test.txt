@@ -17,8 +17,7 @@ public class OneHundredPrisoners
 			try
 			{
 				NUMBER_OF_BOXES = Integer.parseInt(args[0]);
-				int runTimes = Integer.parseInt(args[1]);
-				main.calculateRateOfSurvival(runTimes);
+				main.calculateRateOfSurvival(Integer.parseInt(args[1]));
 			}
 			catch (NumberFormatException e) {
 				System.err.println("Argument " + args[0] + " must be an integer.");
@@ -28,7 +27,7 @@ public class OneHundredPrisoners
 
 	public void createHundredRandomBoxes()
 	{
-		boolean placed = false;
+		boolean placed;
 		int nextValue;
 
 		for (int i = 0; i < NUMBER_OF_BOXES; i++)
@@ -57,14 +56,21 @@ public class OneHundredPrisoners
 
 			newList.addBoxNode(nextBox);
 			listOfBoxes.remove(0);
+			//System.out.println(listOfBoxes.remove(0));
 
-			if (nextBox.getBoxNumber() != nextBox.getCardNumber())
+			// if (nextBox.getBoxNumber() != nextBox.getCardNumber())
+			if (!nextBox.getBoxNumber().equals(nextBox.getCardNumber())) // CHANGE: nextBox.getBoxNumber() != nextBox.getCardNumber()
 			{
-				while ((newList.getLastCardNumber() != newList.getFirstBoxNumber()) && !listOfBoxes.isEmpty())
+				// while ((newList.getLastCardNumber() != newList.getFirstBoxNumber()) && !listOfBoxes.isEmpty())
+				while ((!newList.getLastCardNumber().equals(newList.getFirstBoxNumber())) && !listOfBoxes.isEmpty()) // CHANGE: newList.getLastCardNumber != newList.getFirstBoxNumber()
 				{
+					//System.out.println("in second while loop");
 					for (int i = 0; i < listOfBoxes.getSize(); i++)
 					{
-						if (listOfBoxes.getBoxNumber(i) == newList.getLastCardNumber())
+						//System.out.println("newList.getLastCardNumber(): " + newList.getLastCardNumber());
+						//System.out.println("listOfBoxes.getBoxNumber(i): " + listOfBoxes.getBoxNumber(i));
+						// if (listOfBoxes.getBoxNumber(i) == newList.getLastCardNumber())
+						if (listOfBoxes.getBoxNumber(i).equals(newList.getLastCardNumber())) // CHANGE: listOfBoxes.getBoxNumber(i) == newList.getLastCardNumber()
 						{
 							newList.add(listOfBoxes.getBoxNumber(i), listOfBoxes.getCardNumber(i));
 							listOfBoxes.removeCardNumber(listOfBoxes.getCardNumber(i));
@@ -142,12 +148,12 @@ public class OneHundredPrisoners
 			if (Long.parseLong(milliseconds) < 10)
 				milliseconds = "0" + milliseconds;
 
-				String fTimesRun = NumberFormat.getNumberInstance(Locale.US).format(timesRun++);
-				String fTimesFailed = NumberFormat.getNumberInstance(Locale.US).format(timesFailed);
-				String fTimesSurvived = NumberFormat.getNumberInstance(Locale.US).format(timesSurvived);
-	
-				System.out.print("Runtime: " + minutes + ":" + seconds + ":" + milliseconds + "   Times run: " + fTimesRun + "   Times failed: " + fTimesFailed + "   Times survived: " + fTimesSurvived + "\r");
-			}
+			String fTimesRun = NumberFormat.getNumberInstance(Locale.US).format(timesRun++);
+			String fTimesFailed = NumberFormat.getNumberInstance(Locale.US).format(timesFailed);
+			String fTimesSurvived = NumberFormat.getNumberInstance(Locale.US).format(timesSurvived);
+
+			System.out.print("Runtime: " + minutes + ":" + seconds + ":" + milliseconds + "   Times run: " + fTimesRun + "   Times failed: " + fTimesFailed + "   Times survived: " + fTimesSurvived + "\r");
+		}
 
 		float rateOfSurvival = ((runTimes - timesFailed) / runTimes) * 100;
 		System.out.println("\nRate of survival: " + rateOfSurvival + "%");
