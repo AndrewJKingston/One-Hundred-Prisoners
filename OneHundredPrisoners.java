@@ -142,11 +142,11 @@ public class OneHundredPrisoners
 			if (Long.parseLong(milliseconds) < 10)
 				milliseconds = "0" + milliseconds;
 
-				String fTimesRun = NumberFormat.getNumberInstance(Locale.US).format(timesRun++);
-				String fTimesFailed = NumberFormat.getNumberInstance(Locale.US).format(timesFailed);
-				String fTimesSurvived = NumberFormat.getNumberInstance(Locale.US).format(timesSurvived);
+			String fTimesRun = NumberFormat.getNumberInstance(Locale.US).format(timesRun++);
+			String fTimesFailed = NumberFormat.getNumberInstance(Locale.US).format(timesFailed);
+			String fTimesSurvived = NumberFormat.getNumberInstance(Locale.US).format(timesSurvived);
 	
-				System.out.print("Runtime: " + minutes + ":" + seconds + ":" + milliseconds + "   Times run: " + fTimesRun + "   Times failed: " + fTimesFailed + "   Times survived: " + fTimesSurvived + "\r");
+			System.out.print("Runtime: " + minutes + ":" + seconds + ":" + milliseconds + "   Times run: " + fTimesRun + "   Times failed: " + fTimesFailed + "   Times survived: " + fTimesSurvived + "\r");
 			}
 
 		float rateOfSurvival = ((runTimes - timesFailed) / runTimes) * 100;

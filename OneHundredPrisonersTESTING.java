@@ -1,4 +1,5 @@
 import java.util.*;
+import java.text.NumberFormat;
 
 public class OneHundredPrisonersTESTING
 {
@@ -65,20 +66,20 @@ public class OneHundredPrisonersTESTING
 					{
 						if (listOfBoxes.getBoxNumber(i) == newList.getLastCardNumber())
 						{
-                            System.out.println("Box number equals last card number");
+                            //System.out.println("Box number equals last card number");
 							newList.add(listOfBoxes.getBoxNumber(i), listOfBoxes.getCardNumber(i));
 							listOfBoxes.removeCardNumber(listOfBoxes.getCardNumber(i));
 						}
 						else if (listOfBoxes.isEmpty())
                         {
-                            System.out.println("listOfBoxes.isEmpty(), break");
+                            //System.out.println("listOfBoxes.isEmpty(), break");
 							break;
                         }
 					}
 				}
 			}
 			boxLoops.add(newList);
-            System.out.println("Box loop added to newList");
+            //System.out.println("Box loop added to newList");
 		}
 	}
 
@@ -96,9 +97,12 @@ public class OneHundredPrisonersTESTING
 
 	public void calculateRateOfSurvival(int runTimes) 
 	{
+		int timesRun = 1;
 		long startTime = System.currentTimeMillis();
-		System.out.println("Running simulation " + runTimes + " times with " + NUMBER_OF_BOXES + " prisoners.");
+		String fRunTimes = NumberFormat.getNumberInstance(Locale.US).format(runTimes);
+		System.out.println("Running simulation " + fRunTimes + " times with " + NUMBER_OF_BOXES + " prisoners.");
 		float timesFailed = 0f;
+		int timesSurvived = 0;
 
 		long endTime;
 		long runTime;
@@ -115,9 +119,11 @@ public class OneHundredPrisonersTESTING
 			boxLoops.clear();
 
 			createHundredRandomBoxes();
-            System.out.println("createHundredRandomBoxes successful (112)");
+            //System.out.println("createHundredRandomBoxes successful (124)");
 			createBoxLoops();
-            System.out.println("createBoxLoops successful (114)");
+            //ystem.out.println("createBoxLoops successful (126)");
+
+			float tempFailed = timesFailed;
 
 			for (int j = 0; j < boxLoops.size(); j++)
 			{
@@ -127,6 +133,8 @@ public class OneHundredPrisonersTESTING
 					break;
 				}
 			}
+			if (tempFailed == timesFailed)
+				timesSurvived++;
 
 			endTime = System.currentTimeMillis();
 			runTime = endTime - startTime;
@@ -141,7 +149,11 @@ public class OneHundredPrisonersTESTING
 			if (Long.parseLong(milliseconds) < 10)
 				milliseconds = "0" + milliseconds;
 
-			System.out.print("Runtime: " + minutes + ":" + seconds + ":" + milliseconds + "\r");
+			String fTimesRun = NumberFormat.getNumberInstance(Locale.US).format(timesRun++);
+			String fTimesFailed = NumberFormat.getNumberInstance(Locale.US).format(timesFailed);
+			String fTimesSurvived = NumberFormat.getNumberInstance(Locale.US).format(timesSurvived);
+	
+			System.out.print("Runtime: " + minutes + ":" + seconds + ":" + milliseconds + "   Times run: " + fTimesRun + "   Times failed: " + fTimesFailed + "   Times survived: " + fTimesSurvived + "\r");
 		}
 
 		float rateOfSurvival = ((runTimes - timesFailed) / runTimes) * 100;
