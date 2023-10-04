@@ -126,6 +126,8 @@ public class OneHundredPrisonersTESTING
             System.out.println("createHundredRandomBoxes successful");
 			createBoxLoops();
             System.out.println("createBoxLoops successful");
+			printBoxLoops();
+			System.out.println("printBoxLoops done");
 
 			float tempFailed = timesFailed;
 
