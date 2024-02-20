@@ -11,3 +11,8 @@ For example:
 will run the simulation 10 times with 100 prisoners.  
 
 The riddle as explained by Veritasium: https://youtu.be/iSNsgj1OCLA
+
+## Known Bugs
+
+When simulation is run with more than 127 prisoners, the code will freeze  
+randomly and must exit manually.
